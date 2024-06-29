@@ -1,0 +1,74 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block body %}
+  <h1>{{ listing.title }}</h1>
+
+  {% if watchlist %}
+    <span class="badge text-bg-dark">Watchlist</span>
+  {% endif %}
+
+  <div class="listing_image">
+    {% if listing.image %}
+    <img src="{{ listing.image.url }}" width="150px" alt="{{ listing.title }}">
+    {% else %}
+    <img src="" alt="{{listing.title}}"></a>
+    {% endif %}
+  </div>
+  {%if listing.close == False%}
+  <p>{{ listing.description }}</p>
+  <p>${{ listing.bid }}</p>
+  {%if listing.winner is not None%}
+  <p>Bid winner: {{listing.winner}}</p>
+  {%endif%}
+  <form action="{% url 'auction_bid' listing.id %}" method="post">
+    {% csrf_token %} 
+    <label for="bid">Bid:</label>
+    <input class="form-control mb-3" type="number" placeholder="Bid" name="bid" required>
+    <button class="btn btn-primary mb-3" type="submit">Place bid</button>
+    </form>
+    {%if message%}
+    <p>{{message}}</p>
+    {%endif%}
+    <h5>Details:</h5>
+    <p>Listed by: {{ listing.listed_by }}</p>
+    <p>Category: {{ listing.category }}</p>
+
+    <form action="{% url 'listing' listing.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="listing_id" value="{{ listing.id }}">
+        {% if watchlist %}
+        <button class="btn btn-warning mb-3">Remove from watchlist</button>
+        {% else %}
+        <button class="btn btn-warning mb-3">Add to watchlist</button>
+        {% endif %}
+    </form>
+    {%if listing.listed_by == user.username %}
+    
+    <form action="{% url 'close_bid' listing.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger mb-3" type="submit">Close bid</button>
+    </form>  
+    {%endif%}
+    <div class="mb-3">
+        <form action="{% url 'comments' listing.id%}" method="post">
+            {%csrf_token%}            
+            <label class="form-label">Comments</label>
+            <textarea class="form-control mb-3"rows="3" name="comment"></textarea>
+            <Button class="btn btn-primary" type="submit">Submit</Button>
+        </form>
+    </div>
+    {%for comment in comments%}
+    <div class="card mb-3">
+        <h5 class="card-header">{{comment.username}}</h5>
+        <div class="card-body">
+          <p class="card-text">{{comment.comment}}</p>
+        </div>
+      </div>
+    {%endfor%}
+    
+
+  
+    {%else%}
+        Congratulations to {{listing.winner}} you win the auction by ${{listing.bid}}
+    {%endif%}
+{% endblock %}

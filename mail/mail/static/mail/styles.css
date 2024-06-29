@@ -1,0 +1,43 @@
+textarea {
+    min-height: 400px;
+}
+.email-container p{
+    font-size: 20px;
+    margin: auto;
+    text-align: center;
+}
+.email-container{
+    height: 50px;
+}
+.left h3{
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.left{
+    padding-left: 10px;
+    display: flex;
+    width: 50%;
+}
+.right{
+
+    position: relative;
+    right: 0;
+}
+.email-button{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    background-color: #fff;
+    border: solid black 1px;
+}
+
+.mail ul{
+    padding-left: 0;
+}
+.mail li{
+    padding-top:3px;
+    list-style-type: none;
+}

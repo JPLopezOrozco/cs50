@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block body %}
+    <h2>Active Listings</h2>
+    {% for auction in auctions %}
+    {%if auction.close == False%}
+        <div class="card mb-3 card_shape" style="max-width: 540px;">
+            <div class="row g-0 card_row">
+                <div class="col-md-4 card_col">
+                    <a href="{% url 'listing' auction.id %}"><img src="{{auction.image}}" width="150px" class="img-fluid rounded-start max-width-100 card_img" alt="{{auction.title}}"></a>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body card_container">
+                        <a class="card_link" href="{% url 'listing' auction.id %}"><h5 class="card-titl">{{auction.title}}</h5></a>
+                        <p class="card-text">{{auction.description}}</p>
+                        <p class="car-text">${{auction.bid}}</p>
+                        <p class="card-text"><small class="text-body-secondary">{{auction.category}}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {%endif%}
+    {% endfor %}
+{% endblock %}

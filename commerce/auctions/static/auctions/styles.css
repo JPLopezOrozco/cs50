@@ -1,0 +1,51 @@
+body {
+    padding: 10px;
+}
+
+.card_shape {
+    height: 220px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.card_img {
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.card_row {
+    display: flex;
+    align-items: center;
+}
+
+.card_col {
+    display: flex;
+    justify-content: center;
+}
+
+.card_link{
+    text-decoration: none;
+    color: black;
+}
+
+.card_container{
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.listing_image{
+    width: 500px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.watchlist_btn{
+    border: none;
+    background: none;
+}
+.button_category{
+    display: none;
+}

@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    background-color: white;
+}
+
+code {
+    white-space: pre;
+}
+
+h1 {
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+textarea {
+    height: 90vh;
+    width: 80%;
+    margin: 50px;
+}
+
+.main {
+    padding: 10px;
+}
+
+.search {
+    width: 100%;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 5px;
+}
+.not-found{
+    margin: auto;
+}
+.np-title{
+    text-align: center;
+}
+.np-form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    height: 85vh;
+}
+.entry-button{
+    background-color: lightblue;
+    border: 1px solid;
+}

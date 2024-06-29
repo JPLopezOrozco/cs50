@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+{% block title %}
+    Edit Entry
+{% endblock %}
+
+{% block body %}
+    <h1 class="np-title">Edit Entry</h1>
+    <form method="post" class="np-form" action="{% url 'wiki:edit' title=title %}">
+        {% csrf_token %}
+        {{ edit_page_form.edit }}
+        <button class="btn btn-primary"  type="submit">Save Changes</button>
+    </form>
+{% endblock %}
